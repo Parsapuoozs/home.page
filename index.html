@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل گیمینگ - رودریگز</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, #6e00ff 0%, #a100ff 100%);
+            padding: 20px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
+            margin-left: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .user-details {
+            flex: 1;
+        }
+        
+        .user-name {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .user-name h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-left: 5px;
+        }
+        
+        .verified-badge {
+            color: #1da1f2;
+            font-size: 1.2rem;
+        }
+        
+        .username {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .bio {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-bottom: 8px;
+        }
+        
+        .location i {
+            margin-left: 5px;
+        }
+        
+        .email {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: #ddd;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-follow {
+            background-color: #fff;
+            color: #000;
+            flex: 1;
+        }
+        
+        .btn-follow:hover {
+            background-color: #eee;
+        }
+        
+        .btn-follow i {
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .btn-subscribe {
+            background-color: #a100ff;
+            color: #fff;
+            flex: 1;
+        }
+        
+        .btn-subscribe:hover {
+            background-color: #8a00d6;
+        }
+        
+        .btn-more {
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 0;
+            margin-left: 25px;
+            position: relative;
+            cursor: pointer;
+            font-weight: 600;
+            color: #aaa;
+        }
+        
+        .tab.active {
+            color: #fff;
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #a100ff;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .tab-count {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-right: 5px;
+        }
+        
+        .stream-cards {
+            padding: 0 20px 40px;
+        }
+        
+        .stream-card {
+            background-color: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .stream-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .live-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4500;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .live-badge::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-left: 5px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .viewer-count {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            z-index: 2;
+        }
+        
+        .stream-info {
+            padding: 15px;
+        }
+        
+        .streamer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .streamer-pic {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+        
+        .streamer-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .stream-title {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .stream-description {
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 1.4;
+        }
+        
+        .announcement-card {
+            background: linear-gradient(135deg, #6e00ff 0%, #a100ff 100%);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .announcement-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .announcement-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .gaming-stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: rgba(161, 0, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px;
+            border: 1px solid rgba(161, 0, 255, 0.3);
+        }
+        
+        .gaming-stat {
+            text-align: center;
+        }
+        
+        .gaming-stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #a100ff;
+        }
+        
+        .gaming-stat-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .gaming-stat-label {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 3px;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #a100ff, 0 0 10px #a100ff, 0 0 15px #a100ff;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .stream-thumbnail {
+                height: 220px;
+            }
+        }
+        
+        .podcast-cards {
+            padding: 0 20px 40px;
+            display: none;
+        }
+        
+        /* استایل جدید برای پخش کننده پادکست */
+        .podcast-player {
+            background: linear-gradient(135deg, #1a0a2e 0%, #3a1b5e 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .podcast-player::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(161, 0, 255, 0.1) 0%, rgba(161, 0, 255, 0) 70%);
+            transform: rotate(30deg);
+            z-index: 0;
+        }
+        
+        .podcast-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .podcast-cover {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-left: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .podcast-info {
+            flex: 1;
+        }
+        
+        .podcast-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .podcast-author {
+            font-size: 0.8rem;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+        
+        .podcast-stats {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .podcast-stat {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+        
+        .podcast-stat i {
+            margin-left: 5px;
+            color: #a100ff;
+        }
+        
+        .podcast-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .podcast-main-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a100ff 0%, #6e00ff 100%);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .podcast-main-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(161, 0, 255, 0.4);
+        }
+        
+        .podcast-secondary-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .podcast-secondary-btn:hover {
+            color: #fff;
+        }
+        
+        .podcast-progress-container {
+            flex-grow: 1;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 0 15px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .podcast-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #a100ff, #6e00ff);
+            border-radius: 3px;
+            width: 0%;
+            position: relative;
+        }
+        
+        .podcast-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: -5px;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(161, 0, 255, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .podcast-progress-container:hover .podcast-progress-bar::after {
+            opacity: 1;
+        }
+        
+        .podcast-time {
+            font-size: 0.8rem;
+            color: #aaa;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .podcast-volume {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+        
+        .podcast-volume i {
+            color: #ccc;
+            margin-left: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .podcast-volume input {
+            width: 80px;
+            cursor: pointer;
+        }
+        
+        .podcast-description {
+            font-size: 0.85rem;
+            color: #bbb;
+            line-height: 1.6;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .podcast-likes {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .like-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .like-btn:hover {
+            color: #ff4757;
+        }
+        
+        .like-btn.liked {
+            color: #ff4757;
+            animation: pulse 0.5s;
+        }
+        
+        .like-count {
+            margin-right: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .listeners-count {
+            margin-right: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+        }
+        
+        .listeners-count i {
+            margin-left: 5px;
+            color: #a100ff;
+        }
+        
+        .archive-section {
+            padding: 0 20px 20px;
+            display: none;
+        }
+        
+        .archive-list {
+            list-style-type: none;
+        }
+        
+        .archive-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .archive-item:hover {
+            background-color: rgba(161, 0, 255, 0.1);
+        }
+        
+        .archive-item-number {
+            background-color: #a100ff;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .archive-item-title {
+            flex: 1;
+        }
+        
+        .archive-item-date {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+        
+        /* استایل‌های مربوط به چت و ویدیو مانند قبل باقی می‌مانند */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-container:hover .video-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .volume-control {
+            width: 80px;
+            margin: 0 10px;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            height: 5px;
+            background: rgba(255,255,255,0.2);
+            margin: 0 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #a100ff;
+            border-radius: 3px;
+            width: 0%;
+        }
+
+        .time-display {
+            color: white;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .live-chat-btn {
+            position: absolute;
+            bottom: 50px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+            cursor: pointer;
+            border: none;
+        }
+
+        .live-chat-btn i {
+            margin-left: 5px;
+        }
+
+        .fake-live-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            display: none;
+            z-index: 2;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 0;
+            background-color: #111;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transition: height 0.3s ease;
+            overflow: hidden;
+            z-index: 1000;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #6e00ff 0%, #a100ff 100%);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .chat-title {
+            font-weight: 600;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            height: calc(100% - 100px);
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #222;
+            border-radius: 10px;
+        }
+
+        .message-user {
+            font-weight: 600;
+            color: #a100ff;
+            margin-bottom: 3px;
+        }
+
+        .message-text {
+            font-size: 0.8rem;
+        }
+
+        .chat-input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background-color: #222;
+            display: flex;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            background-color: #333;
+            color: white;
+        }
+
+        .chat-input button {
+            margin-right: 10px;
+            background-color: #a100ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .video-container {
+                height: 400px;
+            }
+            
+            .podcast-cover {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .podcast-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-header">
+        <!-- اطلاعات کاربر -->
+        <div class="user-info">
+            <!-- تصویر پروفایل - قابل تغییر -->
+            <img src="https://biaupload.com/do.php?imgf=org-5c9d765ee1d61.jpg" alt="Profile Picture" class="profile-pic">
+            
+            <div class="user-details">
+                <div class="user-name">
+                    <h2>پارسا پروانه</h2>
+                    <i class="fas fa-check-circle verified-badge"></i>
+                </div>
+                <div class="username">@parsaparvaneh</div>
+                <div class="bio">🎮 بزرگترین میزبان گیمینگ در شبکه‌های اجتماعی 🔑</div>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>ایران - ارومیه</span>
+                </div>
+                <div class="email">parsaparvaneh@gmail.com</div>
+            </div>
+        </div>
+        
+        <!-- آمار کاربر - قابل تغییر -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">۱۰.۸k</div>
+                <div class="stat-label">دنبال‌کننده</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">۸.۴K</div>
+                <div class="stat-label">حامی</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">۱.۴K</div>
+                <div class="stat-label">دونیت</div>
+            </div>
+        </div>
+        
+        <!-- دکمه‌های اکشن - قابل تغییر -->
+        <div class="action-buttons">
+            <button class="btn btn-follow">دنبال کردن <i class="fas fa-check"></i></button>
+            <button class="btn btn-subscribe">عضویت</button>
+            <button class="btn btn-more"><i class="fas fa-ellipsis-h"></i></button>
+        </div>
+        
+        <!-- تب‌ها - قابل تغییر -->
+        <div class="tabs">
+            <div class="tab active">
+                استریم <span class="tab-count">۴</span>
+            </div>
+            <div class="tab">
+                پادکست لایو <span class="tab-count">۲</span>
+            </div>
+            <div class="tab">
+                آرشیو <span class="tab-count">۱۲</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- بخش آمار گیمینگ - قابل تغییر -->
+    <div class="gaming-stats">
+        <div class="gaming-stat">
+            <div class="gaming-stat-icon"><i class="fas fa-trophy"></i></div>
+            <div class="gaming-stat-value">۱,۲۴۵k</div>
+            <div class="gaming-stat-label">پیروزی</div>
+        </div>
+        <div class="gaming-stat">
+            <div class="gaming-stat-icon"><i class="fas fa-gamepad"></i></div>
+            <div class="gaming-stat-value">۳.۲k</div>
+            <div class="gaming-stat-label">کشتن</div>
+        </div>
+        <div class="gaming-stat">
+            <div class="gaming-stat-icon"><i class="fas fa-users"></i></div>
+            <div class="gaming-stat-value">۱.۷k</div>
+            <div class="gaming-stat-label">تیم</div>
+        </div>
+    </div>
+    
+    <!-- کارت‌های استریم - قابل تغییر -->
+    <div class="stream-cards" id="streams">
+        <!-- کارت استریم 1 - لایو فیک -->
+        <div class="stream-card">
+            <div class="video-container">
+                <!-- ویدیو از قبل آپلود شده به عنوان لایو فیک -->
+                <video id="fakeLiveVideo" class="video-player" autoplay loop playsinline>
+                    <source src="https://s43.namasha.com/videos/7453965806.mp4" type="video/mp4">
+                    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+                </video>
+                
+                <!-- کنترل‌های ویدیو -->
+                <div class="video-controls">
+                    <button class="control-btn play-pause-btn"><i class="fas fa-play"></i></button>
+                    <input type="range" class="volume-control" min="0" max="1" step="0.1" value="1">
+                    <div class="progress-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="time-display">00:00 / 00:00</div>
+                    <button class="control-btn fullscreen-btn"><i class="fas fa-expand"></i></button>
+                </div>
+                
+                <div class="live-badge">زنده</div>
+                <div class="viewer-count">۴۴۶بیننده</div>
+                <button class="live-chat-btn" id="chatToggleBtn">
+                    <i class="fas fa-comment-alt"></i>
+                    چت زنده
+                </button>
+                <div class="fake-live-indicator" id="fakeLiveIndicator">
+                    در حال پخش زنده (شبیه‌سازی شده)
+                </div>
+            </div>
+            <div class="stream-info">
+                <div class="streamer">
+                    <img src="https://biaupload.com/do.php?imgf=org-5c9d765ee1d61.jpg" alt="Streamer" class="streamer-pic">
+                    <span class="streamer-name">پارسا پروانه<i class="fas fa-check-circle verified-badge" style="font-size: 0.7rem;"></i></span>
+                </div>
+                <div class="stream-title">گیم پلی وارزون - آپدیت جدید</div>
+                <div class="stream-description">برای تماشای مسابقات حماسی و جوایز به ما بپیوندید!</div>
+            </div>
+        </div>
+        
+        <!-- کارت اطلاعیه - قابل تغییر -->
+        <div class="announcement-card">
+            <div class="announcement-title">📢 رویداد آینده</div>
+            <div class="announcement-text">۱۲ خرداد ساعت ۱۰ صبح جلسه پرسش و پاسخ یکشنبه + هودی گیمینگ ویژه برای همه اعضا!</div>
+        </div>
+    </div>
+    
+    <!-- کارت‌های پادکست - مخفی به صورت پیش‌فرض -->
+    <div class="podcast-cards" id="podcasts">
+        <!-- پادکست با پلیر جدید -->
+        <div class="podcast-player">
+            <div class="podcast-header">
+                <img src="https://wallpapercg.com/media/ts_orig/22147.webp" alt="Podcast Cover" class="podcast-cover">
+                <div class="podcast-info">
+                    <div class="podcast-title">تجزیه و تحلیل بازی وارزون</div>
+                    <div class="podcast-author">پارسا پروانه</div>
+                    <div class="podcast-stats">
+                        <div class="podcast-stat">
+                            <span class="listeners-count">
+                                <i class="fas fa-headphones"></i>
+                                <span id="listenersCount">1,245</span> شنونده
+                            </span>
+                        </div>
+                        <div class="podcast-stat">
+                            <i class="fas fa-calendar-alt"></i>
+                            منتشر شده در ۱۲ خرداد ۱۴۰۲
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="podcast-controls">
+                <button class="podcast-main-btn" id="podcastPlayBtn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="podcast-secondary-btn" id="podcastBackBtn">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button class="podcast-secondary-btn" id="podcastForwardBtn">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+                <div class="podcast-progress-container" id="podcastProgressContainer">
+                    <div class="podcast-progress-bar" id="podcastProgressBar"></div>
+                </div>
+                <div class="podcast-time" id="podcastTime">00:00 / 00:00</div>
+                <div class="podcast-volume">
+                    <i class="fas fa-volume-up"></i>
+                    <input type="range" min="0" max="1" step="0.1" value="1" id="podcastVolume">
+                </div>
+            </div>
+            
+            <div class="podcast-likes">
+                <button class="like-btn" id="likeBtn">
+                    <span class="like-count" id="likeCount">324</span>
+                    <i class="far fa-heart"></i>
+                </button>
+                <div class="listeners-count">
+                    <i class="fas fa-headphones"></i>
+                    <span id="currentListeners">1,245</span> شنونده آنلاین
+                </div>
+            </div>
+            
+            <div class="podcast-description">
+                در این اپیزود به بررسی استراتژی‌های پیشرفته در بازی وارزون می‌پردازیم و نکاتی برای بهتر شدن گیم پلی شما ارائه می‌دهیم. این پادکست شامل تحلیل‌های تخصصی از آخرین آپدیت بازی و مصاحبه با یکی از بازیکنان حرفه‌ای لیگ است.
+            </div>
+            
+            <audio id="podcastAudio">
+                <!-- لینک فایل صوتی تست معتبر -->
+                <source src="https://irsv.upmusics.com/dlw/Makan%20Ghashghaei%20-%20Mahi%20(320).mp3" type="audio/mpeg">
+                مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+            </audio>
+        </div>
+    </div>
+
+    <!-- چت آنلاین -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <div class="chat-title">چت زنده</div>
+            <button class="close-chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" placeholder="پیام خود را بنویسید...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تغییر تب‌ها
+            const tabs = document.querySelectorAll('.tab');
+            const streamsSection = document.getElementById('streams');
+            const podcastsSection = document.getElementById('podcasts');
+            const archiveSection = document.getElementById('archive');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    if (this.textContent.includes('پادکست')) {
+                        streamsSection.style.display = 'none';
+                        podcastsSection.style.display = 'block';
+                        if (archiveSection) archiveSection.style.display = 'none';
+                    } else if (this.textContent.includes('آرشیو')) {
+                        streamsSection.style.display = 'none';
+                        podcastsSection.style.display = 'none';
+                        if (archiveSection) archiveSection.style.display = 'block';
+                    } else {
+                        streamsSection.style.display = 'block';
+                        podcastsSection.style.display = 'none';
+                        if (archiveSection) archiveSection.style.display = 'none';
+                    }
+                });
+            });
+            
+            // شبیه‌سازی دکمه فالو
+            const followBtn = document.querySelector('.btn-follow');
+            followBtn.addEventListener('click', function() {
+                if (this.textContent.includes('دنبال')) {
+                    this.innerHTML = 'دنبال می‌کنید <i class="fas fa-check"></i>';
+                    this.style.backgroundColor = '#a100ff';
+                    this.style.color = '#fff';
+                } else {
+                    this.innerHTML = 'دنبال کردن <i class="fas fa-check"></i>';
+                    this.style.backgroundColor = '#fff';
+                    this.style.color = '#000';
+                }
+            });
+            
+            // افکت‌های ویژه برای عناصر گیمینگ
+            const gamingStats = document.querySelector('.gaming-stats');
+            gamingStats.addEventListener('mouseover', function() {
+                this.style.boxShadow = '0 0 15px rgba(161, 0, 255, 0.5)';
+            });
+            
+            gamingStats.addEventListener('mouseout', function() {
+                this.style.boxShadow = 'none';
+            });
+
+            // شبیه‌سازی لایو فیک
+            const fakeLiveVideo = document.getElementById('fakeLiveVideo');
+            const fakeLiveIndicator = document.getElementById('fakeLiveIndicator');
+            
+            setInterval(() => {
+                if (Math.random() > 0.8) {
+                    fakeLiveIndicator.style.display = 'block';
+                    setTimeout(() => {
+                        fakeLiveIndicator.style.display = 'none';
+                    }, 2000);
+                }
+            }, 5000);
+            
+            fakeLiveVideo.addEventListener('loadedmetadata', function() {
+                this.play();
+            });
+            
+            // شبیه‌سازی افزایش تعداد بینندگان
+            const viewerCount = document.querySelector('.viewer-count');
+            setInterval(() => {
+                const currentCount = parseInt(viewerCount.textContent.replace(/\D/g, ''));
+                const newCount = currentCount + Math.floor(Math.random() * 10);
+                viewerCount.textContent = newCount.toLocaleString('fa-IR') + ' بیننده';
+            }, 30000);
+
+            // کنترل‌های ویدیو
+            const video = document.querySelector('.video-player');
+            const playPauseBtn = document.querySelector('.play-pause-btn');
+            const volumeControl = document.querySelector('.volume-control');
+            const progressContainer = document.querySelector('.progress-container');
+            const progressBar = document.querySelector('.progress-bar');
+            const timeDisplay = document.querySelector('.time-display');
+            const fullscreenBtn = document.querySelector('.fullscreen-btn');
+
+            playPauseBtn.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    video.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+
+            volumeControl.addEventListener('input', function() {
+                video.volume = this.value;
+            });
+
+            video.addEventListener('timeupdate', function() {
+                const progress = (video.currentTime / video.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+                
+                const currentMinutes = Math.floor(video.currentTime / 60);
+                const currentSeconds = Math.floor(video.currentTime % 60);
+                const durationMinutes = Math.floor(video.duration / 60);
+                const durationSeconds = Math.floor(video.duration % 60);
+                
+                timeDisplay.textContent = 
+                    `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds} / ${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
+            });
+
+            progressContainer.addEventListener('click', function(e) {
+                const pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
+                video.currentTime = pos * video.duration;
+            });
+
+            fullscreenBtn.addEventListener('click', function() {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+            });
+
+            video.addEventListener('ended', function() {
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+
+            const videoContainer = document.querySelector('.video-container');
+            videoContainer.addEventListener('mouseenter', function() {
+                document.querySelector('.video-controls').style.opacity = '1';
+            });
+
+            videoContainer.addEventListener('mouseleave', function() {
+                document.querySelector('.video-controls').style.opacity = '0';
+            });
+
+            // مدیریت چت آنلاین
+            const chatToggleBtn = document.getElementById('chatToggleBtn');
+            const chatContainer = document.getElementById('chatContainer');
+            const chatMessages = document.getElementById('chatMessages');
+            const closeChatBtn = document.querySelector('.close-chat');
+
+            const randomNames = [
+                'علی', 'محمد', 'رضا', 'حسین', 'امیر', 'حسن', 'مهدی', 'سجاد', 'پارسا', 'امیرحسین',
+                'نازنین', 'سارا', 'زهرا', 'فاطمه', 'مریم', 'مهسا', 'هانیه', 'نرگس', 'یاسمن', 'پرستو'
+            ];
+
+            const randomMessages = [
+                'سلام به همه!', 'چه استریم جالبی!', 'عالی بود 😍', 'لطفا بیشتر استریم کنید',
+                'من عاشق این بازی هستم', 'چه حرکت جالبی!', 'لطفا توی بازی دوست شیم',
+                'کی برنده میشه؟', 'من همیشه تماشا میکنم', 'دستتون درد نکنه', 'عالی بازی میکنی',
+                'چه گرافیک زیبایی', 'من تازه عضو شدم', 'لطفا یه بازی دیگه هم انجام بدید',
+                'کی مسابقه بعدی؟', 'منم میخوام بازی کنم', 'چقدر حرفه‌ای!', 'دست مریزاد',
+                'انشالله همیشه موفق باشید', 'من طرفدار پروپاقرص شما هستم'
+            ];
+
+            function generateRandomMessages(count) {
+                chatMessages.innerHTML = '';
+                for (let i = 0; i < count; i++) {
+                    const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
+                    const randomMessage = randomMessages[Math.floor(Math.random() * randomMessages.length)];
+                    
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'message';
+                    messageElement.innerHTML = `
+                        <div class="message-user">${randomName}</div>
+                        <div class="message-text">${randomMessage}</div>
+                    `;
+                    
+                    chatMessages.appendChild(messageElement);
+                }
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            chatToggleBtn.addEventListener('click', function() {
+                chatContainer.style.height = '400px';
+                generateRandomMessages(100);
+            });
+
+            closeChatBtn.addEventListener('click', function() {
+                chatContainer.style.height = '0';
+            });
+
+            const chatInput = document.querySelector('.chat-input input');
+            const chatSendBtn = document.querySelector('.chat-input button');
+
+            chatSendBtn.addEventListener('click', function() {
+                if (chatInput.value.trim() !== '') {
+                    const messageElement = document.createElement('div');
+                    messageElement.className = 'message';
+                    messageElement.innerHTML = `
+                        <div class="message-user">شما</div>
+                        <div class="message-text">${chatInput.value}</div>
+                    `;
+                    
+                    chatMessages.appendChild(messageElement);
+                    chatInput.value = '';
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }
+            });
+
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    chatSendBtn.click();
+                }
+            });
+
+            // کنترل‌های جدید پخش کننده پادکست
+            const podcastAudio = document.getElementById('podcastAudio');
+            const podcastPlayBtn = document.getElementById('podcastPlayBtn');
+            const podcastBackBtn = document.getElementById('podcastBackBtn');
+            const podcastForwardBtn = document.getElementById('podcastForwardBtn');
+            const podcastProgressBar = document.getElementById('podcastProgressBar');
+            const podcastProgressContainer = document.getElementById('podcastProgressContainer');
+            const podcastTime = document.getElementById('podcastTime');
+            const podcastVolume = document.getElementById('podcastVolume');
+            const likeBtn = document.getElementById('likeBtn');
+            const likeCount = document.getElementById('likeCount');
+            const listenersCount = document.getElementById('listenersCount');
+            const currentListeners = document.getElementById('currentListeners');
+
+            // پخش/توقف پادکست
+            podcastPlayBtn.addEventListener('click', function() {
+                if (podcastAudio.paused) {
+                    podcastAudio.play()
+                        .then(() => {
+                            this.innerHTML = '<i class="fas fa-pause"></i>';
+                            // افزایش تعداد شنوندگان هنگام پخش
+                            const listeners = parseInt(currentListeners.textContent.replace(/\D/g, ''));
+                            currentListeners.textContent = (listeners + 1).toLocaleString('fa-IR');
+                        })
+                        .catch(error => {
+                            console.error('خطا در پخش پادکست:', error);
+                            alert('خطا در پخش پادکست. لطفا مطمئن شوید مرورگر شما از پخش صدا پشتیبانی می‌کند.');
+                        });
+                } else {
+                    podcastAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+
+            // عقب بردن 15 ثانیه
+            podcastBackBtn.addEventListener('click', function() {
+                podcastAudio.currentTime = Math.max(0, podcastAudio.currentTime - 15);
+            });
+
+            // جلو بردن 15 ثانیه
+            podcastForwardBtn.addEventListener('click', function() {
+                podcastAudio.currentTime = Math.min(podcastAudio.duration, podcastAudio.currentTime + 15);
+            });
+
+            // پیشرفت پادکست
+            podcastAudio.addEventListener('timeupdate', function() {
+                const progress = (podcastAudio.currentTime / podcastAudio.duration) * 100;
+                podcastProgressBar.style.width = `${progress}%`;
+                
+                // نمایش زمان
+                const currentMinutes = Math.floor(podcastAudio.currentTime / 60);
+                const currentSeconds = Math.floor(podcastAudio.currentTime % 60);
+                const durationMinutes = Math.floor(podcastAudio.duration / 60);
+                const durationSeconds = Math.floor(podcastAudio.duration % 60);
+                
+                podcastTime.textContent = 
+                    `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds} / ${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
+            });
+
+            // کلیک روی نوار پیشرفت
+            podcastProgressContainer.addEventListener('click', function(e) {
+                const pos = (e.pageX - this.offsetLeft) / this.offsetWidth;
+                podcastAudio.currentTime = pos * podcastAudio.duration;
+            });
+
+            // کنترل صدا
+            podcastVolume.addEventListener('input', function() {
+                podcastAudio.volume = this.value;
+            });
+
+            // تغییر آیکون پخش/توقف هنگام پایان پادکست
+            podcastAudio.addEventListener('ended', function() {
+                podcastPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+
+            // بارگذاری اولیه اطلاعات پادکست
+            podcastAudio.addEventListener('loadedmetadata', function() {
+                const durationMinutes = Math.floor(podcastAudio.duration / 60);
+                const durationSeconds = Math.floor(podcastAudio.duration % 60);
+                podcastTime.textContent = `00:00 / ${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
+            });
+
+            // نمایش خطا در صورت عدم پشتیبانی
+            podcastAudio.addEventListener('error', function() {
+                console.error('خطا در پخش فایل پادکست:', podcastAudio.error);
+                alert('خطا در بارگذاری فایل پادکست. لطفا از لینک معتبر دیگری استفاده کنید.');
+            });
+
+            // مدیریت لایک
+            likeBtn.addEventListener('click', function() {
+                const heartIcon = this.querySelector('i');
+                let count = parseInt(likeCount.textContent.replace(/\D/g, ''));
+                
+                if (heartIcon.classList.contains('far')) {
+                    heartIcon.classList.remove('far');
+                    heartIcon.classList.add('fas', 'liked');
+                    likeCount.textContent = (count + 1).toLocaleString('fa-IR');
+                } else {
+                    heartIcon.classList.remove('fas', 'liked');
+                    heartIcon.classList.add('far');
+                    likeCount.textContent = (count - 1).toLocaleString('fa-IR');
+                }
+            });
+
+            // شبیه‌سازی افزایش تعداد شنوندگان
+            setInterval(() => {
+                if (!podcastAudio.paused) {
+                    const current = parseInt(currentListeners.textContent.replace(/\D/g, ''));
+                    const change = Math.floor(Math.random() * 3) - 1; // -1, 0 یا 1
+                    const newCount = Math.max(parseInt(listenersCount.textContent.replace(/\D/g, '')), current + change);
+                    currentListeners.textContent = newCount.toLocaleString('fa-IR');
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
