@@ -1,0 +1,661 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+    padding: 20px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.user-info {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+    margin-left: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.user-name h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+.verified-badge {
+    color: #1da1f2;
+    font-size: 1.2rem;
+}
+
+.username {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.bio {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+.location i {
+    margin-left: 5px;
+}
+
+.email {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #ddd;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-follow {
+    background-color: #fff;
+    color: #000;
+    flex: 1;
+}
+
+.btn-follow:hover {
+    background-color: #eee;
+}
+
+.btn-follow i {
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
+.btn-subscribe {
+    background-color: #0066cc;
+    color: #fff;
+    flex: 1;
+}
+
+.btn-subscribe:hover {
+    background-color: #0055aa;
+}
+
+.btn-more {
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 0;
+    margin-left: 25px;
+    position: relative;
+    cursor: pointer;
+    font-weight: 600;
+    color: #aaa;
+}
+
+.tab.active {
+    color: #fff;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0066cc;
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-count {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    margin-right: 5px;
+}
+
+.category-stats {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 102, 204, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    margin: 20px;
+    border: 1px solid rgba(0, 102, 204, 0.3);
+}
+
+.category-stat {
+    text-align: center;
+}
+
+.category-stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #0066cc;
+}
+
+.category-stat-value {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.category-stat-label {
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-top: 3px;
+}
+
+.neon-text {
+    text-shadow: 0 0 5px #0066cc, 0 0 10px #0066cc, 0 0 15px #0066cc;
+}
+
+.podcast-cards {
+    padding: 0 20px 40px;
+}
+
+/* استایل جدید برای پخش کننده پادکست */
+.podcast-player {
+    background: linear-gradient(135deg, #0a1a2e 0%, #1b3a5e 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.podcast-player::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, rgba(0, 102, 204, 0) 70%);
+    transform: rotate(30deg);
+    z-index: 0;
+}
+
+.podcast-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.podcast-cover {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-left: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.podcast-info {
+    flex: 1;
+}
+
+.podcast-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.podcast-author {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.podcast-stats {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.podcast-stat {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 0.8rem;
+    color: #ddd;
+}
+
+.podcast-stat i {
+    margin-left: 5px;
+    color: #0066cc;
+}
+
+.podcast-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.podcast-main-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.podcast-main-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
+}
+
+.podcast-secondary-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.podcast-secondary-btn:hover {
+    color: #fff;
+}
+
+.podcast-progress-container {
+    flex-grow: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin: 0 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.podcast-progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #0066cc, #003366);
+    border-radius: 3px;
+    width: 0%;
+    position: relative;
+}
+
+.podcast-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.podcast-progress-container:hover .podcast-progress-bar::after {
+    opacity: 1;
+}
+
+.podcast-time {
+    font-size: 0.8rem;
+    color: #aaa;
+    min-width: 100px;
+    text-align: center;
+}
+
+.podcast-volume {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.podcast-volume i {
+    color: #ccc;
+    margin-left: 5px;
+    font-size: 0.9rem;
+}
+
+.podcast-volume input {
+    width: 80px;
+    cursor: pointer;
+}
+
+.podcast-description {
+    font-size: 0.85rem;
+    color: #bbb;
+    line-height: 1.6;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.podcast-likes {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.like-btn:hover {
+    color: #ff4757;
+}
+
+.like-btn.liked {
+    color: #ff4757;
+    animation: pulse 0.5s;
+}
+
+.like-count {
+    margin-right: 5px;
+    font-size: 0.9rem;
+}
+
+.listeners-count {
+    margin-right: auto;
+    font-size: 0.9rem;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.listeners-count i {
+    margin-left: 5px;
+    color: #0066cc;
+}
+
+.archive-section {
+    padding: 0 20px 20px;
+}
+
+.archive-list {
+    list-style-type: none;
+}
+
+.archive-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.archive-item:hover {
+    background-color: rgba(0, 102, 204, 0.1);
+}
+
+.archive-item-number {
+    background-color: #0066cc;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.archive-item-title {
+    flex: 1;
+}
+
+.archive-item-date {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+@media (min-width: 768px) {
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .podcast-cover {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .podcast-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* استایل‌های مودال کامنت‌ها */
+.comments-modal {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70%;
+    background-color: #0a1a2e;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.comments-container {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comments-header h3 {
+    font-size: 1.2rem;
+}
+
+.close-comments {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.comments-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.comment-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 102, 204, 0.1);
+    border-radius: 10px;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0066cc;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 102, 204, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.comment-form textarea {
+    height: 80px;
+    resize: none;
+}
+
+#submitComment {
+    background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.comment-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.comment-btn:hover {
+    color: #0066cc;
+}
+
+.comment-btn i {
+    margin-left: 5px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پادکست تکنولوژی - تک‌پاد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="profile-header">
+        <div class="user-info">
+            <img src="https://biaupload.com/do.php?imgf=org-5c9d765ee1d61.jpg" alt="Profile Picture" class="profile-pic">
+            
+            <div class="user-details">
+                <div class="user-name">
+                    <h2>تیم تک‌پاد</h2>
+                    <i class="fas fa-check-circle verified-badge"></i>
+                </div>
+                <div class="username">@techpod_ir</div>
+                <div class="bio">🎙️ مرجع تخصصی پادکست‌های تکنولوژی و فناوری 🔬</div>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>ایران - تهران</span>
+                </div>
+                <div class="email">contact@techpod.ir</div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">۵</div>
+                <div class="stat-label">دنبال‌کننده</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">۰</div>
+                <div class="stat-label">اپیزود</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">۰</div>
+                <div class="stat-label">دانلود</div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn btn-follow">دنبال کردن <i class="fas fa-check"></i></button>
+            <button class="btn btn-subscribe">عضویت</button>
+            <button class="btn btn-more"><i class="fas fa-ellipsis-h"></i></button>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab">
+                اپیزودهای جدید <span class="tab-count">۳</span>
+            </div>
+            <div class="tab active">
+                آرشیو <span class="tab-count">۱۲</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="category-stats">
+        <div class="category-stat">
+            <div class="category-stat-icon"><i class="fas fa-microchip"></i></div>
+            <div class="category-stat-value">۵</div>
+            <div class="category-stat-label">آمار فعالیت</div>
+        </div>
+        <div class="category-stat">
+            <div class="category-stat-icon"><i class="fas fa-code"></i></div>
+            <div class="category-stat-value">۵</div>
+            <div class="category-stat-label">پخش</div>
+        </div>
+        <div class="category-stat">
+            <div class="category-stat-icon"><i class="fas fa-robot"></i></div>
+            <div class="category-stat-value">۲</div>
+            <div class="category-stat-label">هوش مصنوعی</div>
+        </div>
+    </div>
+    
+    <div class="podcast-cards" id="podcasts" style="display: none;"></div>
+
+    <div class="archive-section" id="archive">
+        <ul class="archive-list"></ul>
+    </div>
+
+    <!-- بخش کامنت‌ها -->
+    <div class="comments-modal" id="commentsModal">
+        <div class="comments-container">
+            <div class="comments-header">
+                <h3>نظرات</h3>
+                <button class="close-comments">&times;</button>
+            </div>
+            <div class="comments-list" id="commentsList"></div>
+            <div class="comment-form">
+                <input type="text" id="commentName" placeholder="نام شما">
+                <textarea id="commentText" placeholder="نظر شما..."></textarea>
+                <button id="submitComment">ارسال نظر</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="pod.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
