@@ -4,7 +4,7 @@ const podcasts = [
         title: "Patch V1.0 - exe",
         author: "update.exe",
         cover: "https://biaupload.com/do.php?imgf=org-e356c1ef73f81.jpg",
-        audio: "https://ememay.ir/wp-content/uploads/2024/01/Amir-Tataloo-Ye-Saram-Be-Ma-Bezan.mp3",
+        audio: "https://biaupload.com/do.php?filename=org-9c7a94f7c5241.mp3",
         publishDate: "منتشر شده در28 اردیبهشت 1404",
         description: "پنج خبر برتر این هفته رو بررسی و نگاه اجمالی انداختیم",
         likes: 34,
