@@ -1,5 +1,5 @@
 const podcasts = [
-    {
+    { 
         id: 1,
         title: "Patch V1.0 - exe",
         author: "update.exe",
